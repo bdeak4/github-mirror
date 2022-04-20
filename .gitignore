@@ -1,0 +1,8 @@
+logs/*
+!logs/.keep
+
+repositories/public/*
+!repositories/public/.keep
+
+repositories/private/*
+!repositories/private/.keep
