@@ -1,8 +1,10 @@
-css=/cgit.css
-logo=/logo.png
+css=/style.css
+logo=
 favicon=/favicon.png
 
-scan-path=/srv/git/
-
-robots=noindex, nofollow
 virtual-root=/
+head-include=/usr/share/cgit/head.html
+robots=noindex, nofollow
+enable-index-owner=0
+
+scan-path=/srv/git/
