@@ -1,0 +1,8 @@
+css=/cgit.css
+logo=/logo.png
+favicon=/favicon.png
+
+scan-path=/srv/git/
+
+robots=noindex, nofollow
+virtual-root=/

@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  public:
+    build: .
+    volumes:
+      - ./git/public/:/srv/git/
+      - ./cgitrc:/etc/cgitrc
+      - ./cgit.css:/usr/share/cgit/cgit.css
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 3000:80
+    restart: on-failure
