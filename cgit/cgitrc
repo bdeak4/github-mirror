@@ -10,7 +10,11 @@ head-include=/usr/share/cgit/head.html
 robots=noindex, nofollow
 
 enable-index-owner=0
-enable-commit-graph=1
 repository-sort=age
+enable-blame=1
+enable-commit-graph=1
+enable-log-filecount=1
+enable-log-linecount=1
+source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
 
 scan-path=/srv/git
