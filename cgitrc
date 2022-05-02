@@ -1,10 +1,15 @@
+scan-path=/srv/git/
+
 css=/style.css
 logo=
 favicon=/favicon.png
 
+root-title=git.bdeak.net
+root-desc=github mirror
+
 virtual-root=/
 head-include=/usr/share/cgit/head.html
 robots=noindex, nofollow
-enable-index-owner=0
 
-scan-path=/srv/git/
+enable-index-owner=0
+repository-sort=age
