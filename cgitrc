@@ -2,7 +2,7 @@ scan-path=/srv/git/
 
 css=/style.css
 logo=
-favicon=/favicon.png
+favicon=/favicon.svg
 
 root-title=git.bdeak.net
 root-desc=github mirror
