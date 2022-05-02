@@ -1,5 +1,3 @@
-scan-path=/srv/git/
-
 css=/style.css
 logo=
 favicon=/favicon.svg
@@ -12,4 +10,7 @@ head-include=/usr/share/cgit/head.html
 robots=noindex, nofollow
 
 enable-index-owner=0
+enable-commit-graph=1
 repository-sort=age
+
+scan-path=/srv/git
