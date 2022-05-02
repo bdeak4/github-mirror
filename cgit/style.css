@@ -506,15 +506,15 @@ div#cgit table.diffstat td span.modechange {
 	color: red;
 }
 
-div#cgit table.diffstat td.add a {
+div#cgit table.diff .add {
 	color: green;
 }
 
-div#cgit table.diffstat td.del a {
+div#cgit table.diff .del {
 	color: red;
 }
 
-div#cgit table.diffstat td.upd a {
+div#cgit table.diff .upd {
 	color: blue;
 }
 
