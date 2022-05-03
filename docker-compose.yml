@@ -5,9 +5,6 @@ services:
     build: ./cgit
     volumes:
       - ./git/public/:/srv/git/
-      - ./cgit/cgitrc:/etc/cgitrc
-      - ./cgit/style.css:/usr/share/cgit/style.css
-      - ./cgit/head.html:/usr/share/cgit/head.html
       - ./cgit/favicon-public.svg:/usr/share/cgit/favicon.svg
       - ./cgit/nginx.public.conf:/etc/nginx/conf.d/default.conf
     ports:
@@ -22,9 +19,6 @@ services:
         BASIC_AUTH_PASSWORD: "${BASIC_AUTH_PASSWORD?err}"
     volumes:
       - ./git/private/:/srv/git/
-      - ./cgit/cgitrc:/etc/cgitrc
-      - ./cgit/style.css:/usr/share/cgit/style.css
-      - ./cgit/head.html:/usr/share/cgit/head.html
       - ./cgit/favicon-private.svg:/usr/share/cgit/favicon.svg
       - ./cgit/nginx.private.conf:/etc/nginx/conf.d/default.conf
     ports:
