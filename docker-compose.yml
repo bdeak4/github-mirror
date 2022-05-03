@@ -30,3 +30,13 @@ services:
     ports:
       - 3001:80
     restart: on-failure
+
+  sync:
+    build: ./sync
+    volumes:
+      - ./git/:/srv/git/
+    environment:
+      GITHUB_USER: "${GITHUB_USER?err}"
+      GITHUB_TOKEN: "${GITHUB_TOKEN?err}"
+      REPOS_PATH: /srv/git
+    restart: on-failure

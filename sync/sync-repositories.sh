@@ -7,8 +7,25 @@ REPOS_PATH=${REPOS_PATH:-./git}
 mkdir -p $REPOS_PATH/public
 mkdir -p $REPOS_PATH/private
 
-curl -s "https://$GITHUB_USER:$GITHUB_TOKEN@api.github.com/user/repos" |
-jq -r ".[] | select(.owner.login == \"$GITHUB_USER\") | @base64" |
+cleanup() {
+	rm -f $github_response
+	exit 1
+}
+trap cleanup EXIT
+
+page=1
+github_response=$(mktemp)
+repos_url="https://$GITHUB_USER:$GITHUB_TOKEN@api.github.com/user/repos"
+
+while true; do
+	curl -s "$repos_url?page=$page&per_page=100" |
+	jq -r ".[] | @base64" > $github_response
+
+	cat $github_response
+
+	[ $(wc -l $github_response | cut -d' ' -f1) -eq "100" ] || break
+	page=$((page+1))
+done |
 while read row; do
 	_jq() {
 		echo $row | base64 --decode | jq -r $1
@@ -19,10 +36,13 @@ while read row; do
 		path=$(printf $path | sed 's|/public/|/private/|')
 	fi
 
+	echo $path
+
 	if [ -d "$path" ]; then
-		git -C $path fetch --all --quiet
+		git -C $path fetch --all
 	else
-		git clone --mirror $(_jq '.clone_url') $path
+		url=$(_jq '.clone_url' | sed "s|//|//$GITHUB_USER:$GITHUB_TOKEN@|")
+		git clone --mirror $url $path
 	fi
 
 	mkdir -p $path/info/web
