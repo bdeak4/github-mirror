@@ -12,6 +12,7 @@ ARG GITHUB_USER
 ARG BASIC_AUTH_PASSWORD
 RUN if [ -n "$GITHUB_USER" ] && [ -n "$BASIC_AUTH_PASSWORD" ]; then \
         echo $GITHUB_USER:$BASIC_AUTH_PASSWORD > /etc/nginx/.htpasswd; \
+        sed -i 's/git.bdeak.net/gitp.bdeak.net/g' /etc/cgitrc; \
     fi
 
 STOPSIGNAL SIGTERM
