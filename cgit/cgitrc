@@ -16,6 +16,6 @@ enable-commit-graph=1
 enable-log-filecount=1
 enable-log-linecount=1
 source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
-clone-url=https://$HTTP_HOST/$CGIT_REPO_URL
+clone-url=https://git.bdeak.net/$CGIT_REPO_URL
 
 scan-path=/srv/git
