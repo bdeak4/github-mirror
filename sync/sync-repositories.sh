@@ -31,13 +31,14 @@ while read row; do
 		echo $row | base64 --decode | jq -r $1
 	}
 
-	path=$REPOS_PATH/public/$(_jq .name)
+	path=$REPOS_PATH/public/$(_jq .full_name | sed "s|$GITHUB_USER/||")
 	if [ "$(_jq '.private')" = "true" ]; then
 		path=$(printf $path | sed 's|/public/|/private/|')
 	fi
 
 	echo $path
 
+	mkdir -p $(dirname $path)
 	if [ -d "$path" ]; then
 		git -C $path fetch --all
 	else
